@@ -4,7 +4,7 @@ import thunkMiddleware from 'redux-thunk';
 import * as firebase from 'firebase';
 
 //
-// Initial State
+// Initial State...
 //
 
 const initialState = {
@@ -56,14 +56,10 @@ const setPersonData = (personData) => {
 
 const watchPersonData = () => {
     return function(dispatch) {
-
         firebase.database().ref("person").on("value", function(snapshot) {
             var personData = snapshot.val();
             dispatch(setPersonData(personData));
-        }, function(error) {
-            
-        });
-
+        }, function(error) { });
     };
 }
 
